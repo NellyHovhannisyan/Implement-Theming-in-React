@@ -1,13 +1,14 @@
 import React from "react";
-import Header from "./components/Header";
+
+import Content from "./components/Content";
+import Theme from "./Theme";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <div>Hello dolly</div>
-
-      <footer></footer>
+      <Theme>
+        <Content />
+      </Theme>
     </div>
   );
 }
