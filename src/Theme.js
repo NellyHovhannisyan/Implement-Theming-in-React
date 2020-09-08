@@ -1,19 +1,23 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import { themeModes } from "./App";
 
-const theme = {
-  bgColors: {
-    lightTheme: "#fff",
-    darkTheme: "#000",
-  },
-  textColors: {
-    lightColor: "#000",
-    darkColor: "#fff",
-  },
+const lightTheme = {
+  cardBackground: "#fff",
+  textColor: "#000",
 };
 
-const Theme = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
+const darkTheme = {
+  cardBackground: "#000",
+  textColor: "#fff",
+};
+
+const Theme = ({ children, themeMode }) => (
+  <ThemeProvider
+    theme={themeMode === themeModes.LIGHT ? lightTheme : darkTheme}
+  >
+    {children}
+  </ThemeProvider>
 );
 
 export default Theme;

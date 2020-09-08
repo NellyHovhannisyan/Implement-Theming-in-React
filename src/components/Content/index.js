@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -6,84 +6,140 @@ import Typography from "@material-ui/core/Typography";
 import styled from "styled-components";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
 
 const NewCard = styled(Card)`
-  width: 450px;
-  background-color: ${(props) => props.bg} !important;
-  color: ${(props) => props.color} !important;
+  width: 80%;
+  background-color: ${(props) => props.theme.cardBackground} !important;
+  color: ${(props) => props.theme.textColor} !important;
   margin: 25px auto;
 
   & img {
     height: 350px;
     object-fit: contain;
   }
-  & p {
-    color: ${(props) => props.color};
+  & p,
+  & h3 {
+    color: ${(props) => props.theme.textColor} !important;
   }
 `;
-const NewButton = styled(Button)`
-  margin: 20px;
-`;
 
-function Content() {
-  const [theme, setTheme] = useState({
-    bgColor: (props) => props.theme.bgColors.lightTheme,
-    textColor: (props) => props.theme.textColors.lightColor,
-  });
-  const [isClicked, setIsClicked] = useState(false);
-
+function Content({ changeThemeMode }) {
   const handleButtonClick = () => {
-    setIsClicked(!isClicked);
+    changeThemeMode();
   };
 
-  const reset = () => {
-    setTheme({
-      bgColor: (props) => props.theme.bgColors.lightTheme,
-      textColor: (props) => props.theme.textColors.lightColor,
-    });
-  };
-
-  useEffect(() => {
-    if (isClicked) {
-      setTheme({
-        bgColor: (props) => props.theme.bgColors.darkTheme,
-        textColor: (props) => props.theme.textColors.darkColor,
-      });
-    } else {
-      reset();
-    }
-  }, [isClicked]);
   return (
     <>
-      <NewButton
-        mt={3}
-        variant="contained"
-        color="secondary"
-        onClick={handleButtonClick}
-      >
-        Change Theme
-      </NewButton>
+      <Box display="flex" justifyContent="center" m={1} p={1}>
+        <NewCard>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image="https://66.media.tumblr.com/tumblr_m7v0lxN0po1rn95k2o1_500.gif"
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                variant="h3"
+                component="h3"
+                align="center"
+                color="secondary"
+              >
+                Minions
+              </Typography>
 
-      <NewCard bg={theme.bgColor} color={theme.textColor}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image="https://i.ytimg.com/vi/EbMt875tB3U/maxresdefault.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Minions
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              minus vel, libero corporis nemo veniam.
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </NewCard>
+              <List>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <img
+                        src="https://pngimg.com/uploads/minions/minions_PNG57.png"
+                        width="50px"
+                        alt="minions"
+                      />
+                    </Avatar>
+                  </ListItemAvatar>
+                  Minions actually speak a language known as “minion-ese”
+                  however this language is easy to learn, especially if you know
+                  some Spanish and Italian.
+                </ListItem>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <img
+                        src="https://p7.hiclipart.com/preview/762/595/577/evil-minion-minions-gif-clip-art-despicable-me-minions-holiday.jpg"
+                        width="50px"
+                        alt="minions"
+                      />
+                    </Avatar>
+                  </ListItemAvatar>
+                  If you look at the hand of a minion, you will notice they only
+                  have 3 fingers.{" "}
+                </ListItem>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <img
+                        src="https://www.searchpng.com/wp-content/uploads/2019/03/Minions-PNG-Image.png"
+                        width="50px"
+                        alt="minions"
+                      />
+                    </Avatar>
+                  </ListItemAvatar>
+                  Minions are often seen wearing goggles, whether they have one
+                  eye or two eyes, but no one known why they were goggles.
+                </ListItem>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <img
+                        src="https://pp.netclipart.com/pp/s/17-170197_minions-png-bob-y-kevin-minions.png"
+                        width="50px"
+                        alt="minions"
+                      />
+                    </Avatar>
+                  </ListItemAvatar>
+                  The height of the average minion is about 105 centimeters or
+                  41 inches tall or a little under 3 and a half feet tall.{" "}
+                </ListItem>
+                <ListItem>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <img
+                        src="https://n7.nextpng.com/sticker-png/688/734/sticker-png-stuart-the-minion-kevin-the-minion-computer-icons-minions-bob-the-minion-minions-heroes-electric-blue-film-despicable-me.png"
+                        width="50px"
+                        alt="minions"
+                      />
+                    </Avatar>
+                  </ListItemAvatar>
+                  The minions’ design was inspired by the Jawas from Star Wars
+                  and the Oompa Loompas from Willy Wonka and the Chocolate
+                  Factory. At first there were talks of the minions being tall
+                  and orc-like. Thankfully that didn’t happen!{" "}
+                </ListItem>
+              </List>
+            </CardContent>
+          </CardActionArea>
+        </NewCard>
+      </Box>
+      <Box display="flex" justifyContent="center" m={1} p={1}>
+        <Button
+          mt={3}
+          variant="contained"
+          color="secondary"
+          onClick={handleButtonClick}
+        >
+          Change Theme
+        </Button>
+      </Box>
     </>
   );
 }
